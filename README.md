@@ -12,6 +12,7 @@ Java app that creates a .reg file for using custom protocols in Windows
 
 Notes:
  - The .reg file is created in the project/jar directory
+ - The jar is available for download in the "dist" folder
 
 
 
