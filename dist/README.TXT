@@ -1,1 +1,0 @@
-This .jar is the app precompiled

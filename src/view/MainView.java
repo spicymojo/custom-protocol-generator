@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package frame;
+package view;
 
+import controller.MainController;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -17,12 +18,12 @@ import javax.swing.JFileChooser;
  *
  * @author jsantana
  */
-public class frame extends javax.swing.JFrame {
+public class MainView extends javax.swing.JFrame {
 
     /**
      * Creates new form frame
      */
-    public frame() {
+    public MainView() {
         initComponents();
     }
 
@@ -116,30 +117,12 @@ public class frame extends javax.swing.JFrame {
     }//GEN-LAST:event_protocolTextFieldActionPerformed
 
     private void generateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateButtonActionPerformed
-        String protocol = protocolTextField.getText();
-        String path = pathTextField.getText();
-        path = path.replace("\\", "\\\\");
-        
-        File file = new File("./");
-        try {
-            String text = getText(protocol,path);
-            System.out.println(text);
-            BufferedWriter bw = new BufferedWriter(new FileWriter(protocol + ".reg"));
-            bw.write(text);
-            bw.close();
-        } catch (IOException ex) {
-            Logger.getLogger(frame.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        MainController.generateRegistryFile(protocolTextField.getText(), 
+                pathTextField.getText().replace("\\", "\\\\"));
     }//GEN-LAST:event_generateButtonActionPerformed
 
     private void choosePathButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_choosePathButtonActionPerformed
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
-        int result = fileChooser.showOpenDialog(this);
-        if (result == JFileChooser.APPROVE_OPTION){
-            String path = fileChooser.getSelectedFile().getPath();
-            pathTextField.setText(path);
-        }
+        MainController.choosePath(pathTextField, this);
     }//GEN-LAST:event_choosePathButtonActionPerformed
 
     /**
@@ -159,20 +142,21 @@ public class frame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frame().setVisible(true);
+                new MainView().setVisible(true);
             }
         });
     }
@@ -185,20 +169,4 @@ public class frame extends javax.swing.JFrame {
     private javax.swing.JTextField pathTextField;
     private javax.swing.JTextField protocolTextField;
     // End of variables declaration//GEN-END:variables
-
-    private String getText(String protocol, String path) {
-        return "Windows Registry Editor Version 5.00\n" +
-                 "\n[HKEY_CLASSES_ROOT\\" + protocol + "]\n" +
-                "@=\"URL: " + protocol + " Protocol\"" +
-                "\n\"URL Protocol\"=\"\" " +
-                /*
-                "\n\n\"[HKEY_CLASSES_ROOT\\" + protocol + "\\DefaultIcon]" + 
-                "@=\" + " + path + "\""  +     
-                */
-                
-                "\n\n" + "[HKEY_CLASSES_ROOT\\" + protocol + "\\shell]" + 
-                "\n\n" + "[HKEY_CLASSES_ROOT\\" + protocol + "\\shell\\open]" +
-                "\n\n" + "[HKEY_CLASSES_ROOT\\" + protocol + "\\shell\\open\\command]" +
-                "\n" + "@=\"" + path + "   \\\"%1\\\"\"" ; 
-    }
 }
