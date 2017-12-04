@@ -1,0 +1,12 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\hola]
+@="URL: hola Protocol"
+"URL Protocol"="" 
+
+[HKEY_CLASSES_ROOT\hola\shell]
+
+[HKEY_CLASSES_ROOT\hola\shell\open]
+
+[HKEY_CLASSES_ROOT\hola\shell\open\command]
+@="C:\\Users\\Public\\Desktop\\Google Chrome.lnk   \"%1\""
