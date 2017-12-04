@@ -13,6 +13,7 @@ Java app that creates a .reg file for using custom protocols in Windows
 Notes:
  - The .reg file is created in the project/jar directory
  - The jar is available for download in the "dist" folder
-
+ 
+<html><a href="https://github.com/mrivaj/custom-protocol-generator/raw/master/dist/custom-protocol-generator.jar">Download .jar</a></html>
 
 
