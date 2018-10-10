@@ -11,7 +11,7 @@ It comes with a GUI
 5. Create a link like "MyProtocol:myparameters"
 6. Done!
 
-####Notes:
+#### Notes:
  - The .reg file is created in the project/jar directory
  - The jar is available for download in the "dist" folder
  
