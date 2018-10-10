@@ -1,5 +1,6 @@
-# customProtocolGenerator
-Java app that creates a .reg file for using custom protocols in Windows
+# Custom Protocol Generator
+Java app that creates a .reg file for create custom protocols in a Windows machine.
+It comes with a GUI
 
 ## How to use?
 
@@ -10,7 +11,7 @@ Java app that creates a .reg file for using custom protocols in Windows
 5. Create a link like "MyProtocol:myparameters"
 6. Done!
 
-Notes:
+####Notes:
  - The .reg file is created in the project/jar directory
  - The jar is available for download in the "dist" folder
  
