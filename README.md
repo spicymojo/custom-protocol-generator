@@ -1,5 +1,6 @@
 # Custom Protocol Generator
 Java app that creates a .reg file for create custom protocols in a Windows machine.
+
 It comes with a GUI
 
 ## How to use?
